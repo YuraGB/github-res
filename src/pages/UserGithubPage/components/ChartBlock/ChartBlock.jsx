@@ -1,5 +1,6 @@
 import { useUserGithub } from "./useChartBlock.js";
 import classes from "./charts.module.scss";
+import PropTypes from "prop-types";
 
 /**
  *  ChartBlock
@@ -30,3 +31,7 @@ const ChartBlock = ({ repoName }) => {
 };
 
 export default ChartBlock;
+
+ChartBlock.propTypes = {
+  repoName: PropTypes.string.isRequired,
+};

@@ -1,4 +1,5 @@
 import classes from "./errorFetch.module.scss";
+import PropTypes from "prop-types";
 
 const ErrorFetch = ({ globalDataError, reposError, userName }) => {
   return (
@@ -12,3 +13,9 @@ const ErrorFetch = ({ globalDataError, reposError, userName }) => {
 };
 
 export default ErrorFetch;
+
+ErrorFetch.propTypes = {
+  globalDataError: PropTypes.object,
+  reposError: PropTypes.object,
+  userName: PropTypes.string,
+};

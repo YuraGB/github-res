@@ -1,6 +1,6 @@
-import { memo } from "react";
 import RepoItem from "../RepoItem/RepoItem.jsx";
 import classes from "./reposBlock.module.scss";
+import PropTypes from "prop-types";
 
 /**
  * UserReposBlock
@@ -25,7 +25,6 @@ const UserReposBlock = ({ repos, error, loading }) => {
 
   return (
     <section className={classes.root}>
-      {/* eslint-disable-next-line react/prop-types */}
       {repos.map((repo) => (
         <RepoItem key={repo.id} repo={repo} />
       ))}
@@ -33,4 +32,21 @@ const UserReposBlock = ({ repos, error, loading }) => {
   );
 };
 
-export default memo(UserReposBlock);
+export default UserReposBlock;
+
+UserReposBlock.propTypes = {
+  repos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      language: PropTypes.string,
+      url: PropTypes.string.isRequired,
+      updatedAt: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      fullName: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  error: PropTypes.instanceOf(Error),
+  loading: PropTypes.bool.isRequired,
+};

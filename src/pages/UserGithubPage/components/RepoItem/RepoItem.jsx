@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import classes from "./repoItem.module.scss";
 import ChartBlock from "../ChartBlock/ChartBlock.jsx";
+import PropTypes from "prop-types";
 
 /**
  * @fileoverview RepoItem component
@@ -9,8 +10,7 @@ import ChartBlock from "../ChartBlock/ChartBlock.jsx";
  * @constructor
  */
 const RepoItem = ({ repo }) => {
-  const { name, description, language, url, updatedAt, createdAt, fullName } =
-    repo;
+  const { name, description, language, url, updatedAt, createdAt } = repo;
 
   return (
     <div className={classes.item}>
@@ -31,3 +31,15 @@ const RepoItem = ({ repo }) => {
 };
 
 export default RepoItem;
+
+RepoItem.propTypes = {
+  repo: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    language: PropTypes.string,
+    url: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    fullName: PropTypes.string.isRequired,
+  }).isRequired,
+};

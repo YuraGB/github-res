@@ -1,6 +1,5 @@
-import { memo } from "react";
 import classes from "./infoBlock.module.scss";
-
+import PropTypes from "prop-types";
 /**
  * GlobalInfoBlock
  * @param data
@@ -35,4 +34,10 @@ const GlobalInfoBlock = ({ data, error, loading }) => {
   );
 };
 
-export default memo(GlobalInfoBlock);
+export default GlobalInfoBlock;
+
+GlobalInfoBlock.propTypes = {
+  data: PropTypes.object,
+  error: PropTypes.object,
+  loading: PropTypes.bool,
+};
