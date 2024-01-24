@@ -1,0 +1,15 @@
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #242424;
+  border-top: 1px solid #242424;
+}
+
+.noDataFound {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  color: brown;
+}
