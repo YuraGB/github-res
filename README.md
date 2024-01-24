@@ -3,7 +3,7 @@
 ## To do
     - To split api calls to different functions  
 
-    - Remove Ant design. It  doesn't uses alot
+    - Remove Ant design. It doesn't use alot
 
     - Add a loading spinner
         
@@ -13,4 +13,4 @@
     
     - Open repositories in new tab
 
-    - Add UI tests
+    - Add Unit tests
