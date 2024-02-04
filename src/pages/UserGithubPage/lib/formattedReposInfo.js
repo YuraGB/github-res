@@ -30,7 +30,7 @@ export const formattedReposInfo = (reposData) => {
     };
   });
 
-  // thew most recent updated first
+  // the most recent updated first
   return reposInfo.sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
   );

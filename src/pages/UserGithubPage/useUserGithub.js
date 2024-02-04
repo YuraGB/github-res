@@ -1,9 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import getUserData from "./api/getUserData.js";
 import { useMemo } from "react";
 import getFormattedGlobalUserInfo from "./lib/formatGlobalUserInfo.js";
 import { formattedReposInfo } from "./lib/formattedReposInfo.js";
+import getData from "./api/getData.js";
 
 /**
  * @fileoverview useUserGithub hook
@@ -12,6 +12,7 @@ import { formattedReposInfo } from "./lib/formattedReposInfo.js";
 export const useUserGithub = () => {
   const { username: userName } = useParams();
   const navigate = useNavigate();
+  const { getUserData, getUserRepos } = getData;
 
   const {
     data: globalData,
@@ -20,7 +21,7 @@ export const useUserGithub = () => {
   } = useQuery({
     queryKey: ["userGlobal", userName],
     enabled: !!userName,
-    queryFn: async () => await getUserData(userName),
+    queryFn: () => getUserData(userName),
   });
 
   const {
@@ -30,7 +31,7 @@ export const useUserGithub = () => {
   } = useQuery({
     queryKey: ["userRepos", userName],
     enabled: !!userName,
-    queryFn: async () => await getUserData(userName, true),
+    queryFn: async () => await getUserRepos(userName),
   });
 
   if (!userName) {

@@ -1,6 +1,8 @@
 import RepoItem from "../RepoItem/RepoItem.jsx";
 import classes from "./reposBlock.module.scss";
 import PropTypes from "prop-types";
+import ErrorComponent from "../../../../components/ErrorComponent/ErrorComponent.jsx";
+import SpinnerComponent from "../../../../components/Spinner/Spinner.jsx";
 
 /**
  * UserReposBlock
@@ -12,11 +14,11 @@ import PropTypes from "prop-types";
  */
 const UserReposBlock = ({ repos, error, loading }) => {
   if (loading) {
-    return <div className={classes.noData}>Loading...</div>;
+    return <SpinnerComponent />;
   }
 
   if (error) {
-    return <div className={classes.noData}>Something went wrong</div>;
+    return <ErrorComponent />;
   }
 
   if (!repos || repos.length === 0) {

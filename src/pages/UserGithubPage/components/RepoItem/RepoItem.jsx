@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import classes from "./repoItem.module.scss";
 import ChartBlock from "../ChartBlock/ChartBlock.jsx";
 import PropTypes from "prop-types";
+import CreatedAtComponent from "../../../../components/CreatedAtComponent.jsx";
+import RepoName from "./RepoName.jsx";
+import RepoDescription from "./RepoDescription.jsx";
+import MainLanguage from "./MainLanguage.jsx";
+import LasteTimeUpdated from "./LasteTimeUpdated.jsx";
 
 /**
  * @fileoverview RepoItem component
@@ -14,15 +19,13 @@ const RepoItem = ({ repo }) => {
 
   return (
     <div className={classes.item}>
-      <Link to={url} className={classes.item__link}>
-        <h4 className={classes.item__name}>Repository name: {name}</h4>
-        {description ? (
-          <p className={classes.item__description}>{description}</p>
-        ) : null}
-        {language ? <p>Main language: {language}</p> : null}
+      <Link to={url} className={classes.item__link} target={"_blank"}>
+        <RepoName name={name} />
+        <RepoDescription description={description} />
+        <MainLanguage language={language} />
         <div>
-          <p>Created: {createdAt}</p>
-          <p>Last time updated: {new Date(updatedAt).toLocaleDateString()}</p>
+          <CreatedAtComponent createdAt={createdAt} />
+          <LasteTimeUpdated updatedAt={updatedAt} />
         </div>
         <ChartBlock repoName={name} />
       </Link>

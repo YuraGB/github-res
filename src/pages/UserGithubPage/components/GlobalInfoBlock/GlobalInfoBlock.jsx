@@ -1,5 +1,11 @@
 import classes from "./infoBlock.module.scss";
 import PropTypes from "prop-types";
+import ErrorComponent from "../../../../components/ErrorComponent/ErrorComponent.jsx";
+import UserName from "./UserName.jsx";
+import Bio from "./Bio.jsx";
+import RepositoryComponent from "./RepositoryComponent.jsx";
+import CreatedAtComponent from "../../../../components/CreatedAtComponent.jsx";
+import SpinnerComponent from "../../../../components/Spinner/Spinner.jsx";
 /**
  * GlobalInfoBlock
  * @param data
@@ -10,12 +16,11 @@ import PropTypes from "prop-types";
  */
 const GlobalInfoBlock = ({ data, error, loading }) => {
   if (loading) {
-    return <div>Loading...</div>;
+    return <SpinnerComponent />;
   }
 
   if (error) {
-    console.log(error);
-    return <div className={classes.noDataFound}>Something went wrong</div>;
+    return <ErrorComponent />;
   }
 
   if (!data) {
@@ -26,10 +31,10 @@ const GlobalInfoBlock = ({ data, error, loading }) => {
 
   return (
     <section className={classes.bio}>
-      <p>User name or login: {name ? name : login}</p>
-      {bio ? <p>Bio: {bio}</p> : null}
-      <p> Public repositories: {publicRepos}</p>
-      <p> Created at: {new Date(createdAt).toLocaleDateString()}</p>
+      <UserName nicknameOrName={name ?? login} />
+      <Bio bioData={bio} />
+      <RepositoryComponent publicRepos={publicRepos} />
+      <CreatedAtComponent createdAt={createdAt} />
     </section>
   );
 };

@@ -1,6 +1,8 @@
 import { useUserGithub } from "./useChartBlock.js";
 import classes from "./charts.module.scss";
 import PropTypes from "prop-types";
+import ErrorComponent from "../../../../components/ErrorComponent/ErrorComponent.jsx";
+import SpinnerComponent from "../../../../components/Spinner/Spinner.jsx";
 
 /**
  *  ChartBlock
@@ -11,11 +13,17 @@ import PropTypes from "prop-types";
 const ChartBlock = ({ repoName }) => {
   const { error, languages, isLoading } = useUserGithub(repoName);
 
+  if (isLoading) {
+    return <SpinnerComponent />;
+  }
+
+  if (error) {
+    return <ErrorComponent message={error.message} />;
+  }
   return (
     <section>
       <h4 className={classes.title}>Languages: </h4>
-      {isLoading ? <p>Loading...</p> : null}
-      {error ? <p>{error.message}</p> : null}
+
       {languages
         ? languages.map(([name, value]) => {
             return (
