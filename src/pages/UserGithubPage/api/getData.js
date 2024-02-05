@@ -1,5 +1,8 @@
 import { Octokit } from "@octokit/rest";
 
+/**
+ * UserData
+ */
 class UserData {
   /**
    * Singleton instance
@@ -11,7 +14,6 @@ class UserData {
    * Singleton instance
    */
   constructor() {
-    console.log("UserData constructor");
     if (UserData._instance) {
       throw new Error(
         "Singleton classes can't be instantiated more than once.",

@@ -25,7 +25,12 @@ const ChartBlock = ({ repoName }) => {
       <h4 className={classes.title}>Languages: </h4>
 
       {languages
-        ? languages.map(([name, value]) => {
+        ? /**
+           *
+           * @param {string} name
+           * @param {string} value
+           */
+          languages.map(([name, value]) => {
             return (
               <div key={name + value} className={classes.list}>
                 <p>{name}</p>
